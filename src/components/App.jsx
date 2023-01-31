@@ -13,12 +13,9 @@ export const App = () => {
           </div>
           <div className={css.container}>
             <h2>Contacts</h2>
-            <ContactForm addContact={addContact} btnText="Create"/>
-            <Filter filter={filter} onChange={onInputChange}/>
-            <ContactList
-              contacts={getVisibleContacts}
-              deleteContact={deleteContact}
-            />
+            <ContactForm />
+            <Filter />
+            <ContactList/>
           </div>
         </section>
       </>

@@ -7,6 +7,7 @@ import css from './ContactForm.module.css';
 export const ContactForm = () => {
   const dispatch = useDispatch();
   const contacts = useSelector(state => state.contacts.items);
+
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
@@ -18,12 +19,13 @@ export const ContactForm = () => {
       setNumber(event.target.value);
     }
     }
+    
 
     const handleSubmit = event => {
       event.preventDefault();
       const contact = {
-      name,
-      number,
+      name: event.target.elements.name.value,
+      number: event.target.elements.number.value,
       id: nanoid(),
     };
     const isAtList = contacts.find(contact => contact.name === name);
@@ -48,7 +50,6 @@ export const ContactForm = () => {
               title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
               required
               onChange={inputChange}
-              value={name}
             />
             <p className={css.formText}>Number</p>
             <input
@@ -59,7 +60,6 @@ export const ContactForm = () => {
               title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
               required
               onChange={inputChange}
-              value={number}
             />
             <button className={css.formButton} type="submit">Add contact
             </button>

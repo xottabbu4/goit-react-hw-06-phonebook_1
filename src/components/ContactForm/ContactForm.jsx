@@ -24,8 +24,8 @@ export const ContactForm = () => {
     const handleSubmit = event => {
       event.preventDefault();
       const contact = {
-      name: event.target.elements.name.value,
-      number: event.target.elements.number.value,
+      name,
+      number,
       id: nanoid(),
     };
     const isAtList = contacts.find(contact => contact.name === name);
